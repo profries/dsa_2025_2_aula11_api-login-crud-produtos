@@ -1,6 +1,7 @@
 const express = require('express')
 const produtoRouter = require("./router/produto_router")
 const usuarioRouter = require('./router/usuario_router')
+const loginController = require("./controller/login_controller")
 const loggerMiddleware = require("./middleware/logger_middleware")
 
 const app = express()
@@ -17,8 +18,10 @@ app.get('/', (req, res) => {
 
 })
 
+app.post("/api/login", loginController.realizarLogin)
+
 app.use("/api/produtos", produtoRouter);
-app.use('/api/usuarios', usuarioRouter);
+app.use("/api/usuarios", usuarioRouter);
 
 app.listen(port, () => {
   console.log(`API running on port ${port}`)

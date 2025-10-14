@@ -25,8 +25,17 @@ function inserir(usuario) {
     return Promise.resolve(usuario);
 }
 
+function buscarPorEmail(email) {
+    return Promise.resolve(listaUsuarios.find(
+        function(usuario) {
+            return (usuario.email == email)
+        }
+    ));
+}
+
 module.exports = {
     listar,
     inserir,
     buscarPorId,
+    buscarPorEmail
 }
